@@ -216,7 +216,7 @@ body.open #introBtn{opacity:0; pointer-events:none}
 .side.used .sdSpr{opacity:.35}
 /* ---------- bottom bar ---------- */
 #bar{
-  position:absolute; top:calc(var(--u)*51.2); left:50%; transform:translateX(-50%);
+  position:absolute; top:calc(var(--u)*52.4); left:50%; transform:translateX(-50%);
   z-index:60; background:var(--cream); border-radius:999px;
   display:flex; align-items:center; gap:calc(var(--u)*1.6);
   padding:calc(var(--u)*.75) calc(var(--u)*1.8);
@@ -493,6 +493,7 @@ for(const [key,right,top] of PAN_LAYOUT){
   const d=ING[key];
   const pan=document.createElement('div'); pan.className='pan'; pan.dataset.ing=key; pan.dataset.act='';
   pan.style.right=U+right+')'; pan.style.top=U+top+')';
+  pan.style.zIndex=String(24-Math.round((top-11.8)/9.6));
   const spr=document.createElement('div'); spr.className='panSpr spr';
   const tag=document.createElement('div'); tag.className='tag';
   tag.innerHTML='<span class="ic">'+d.icon+'</span><span>'+d.name+'</span><span class="pr">'+ingTag(d)+'</span>';
@@ -529,6 +530,7 @@ for(const key of Object.keys(SIDES)){
   const d=SIDES[key];
   const s=document.createElement('div'); s.className='side'; s.dataset.side=key; s.dataset.act='';
   s.style.left=U+'5.5)'; s.style.top=U+d.top+')';
+  s.style.zIndex=String(24-Math.round((d.top-8.2)/13.6));
   const spr=document.createElement('div'); spr.className='sdSpr spr';
   const tag=document.createElement('div'); tag.className='tag';
   tag.innerHTML='<span>'+d.name+'</span><span class="pr">'+fmt(d.price)+'</span>';
@@ -932,8 +934,13 @@ scene.addEventListener('pointerdown',e=>{
   if(e.target.closest('#receipt,#bar,#band,#howPop,#demoLbl')) return;
   if(held){
     if(held.kind==='bottle'&&overBowl(e)){ startDrawing(e); downInfo=null; return; }
-    downInfo={x:e.clientX,y:e.clientY,dropAttempt:true};
-    attemptDrop(e); return;
+    if(e.target.closest('.pan,.bottle,.side')){
+      if(held.kind==='bottle') bottleEls[held.id].classList.remove('gone');
+      clearHeld();
+    } else {
+      downInfo={x:e.clientX,y:e.clientY,dropAttempt:true};
+      attemptDrop(e); return;
+    }
   }
   const pile=e.target.closest('.pile'); if(pile){ removePile(pile); return; }
   const pan=e.target.closest('.pan'); if(pan){ pickIngredient(pan.dataset.ing,e); downInfo={x:e.clientX,y:e.clientY}; return; }
