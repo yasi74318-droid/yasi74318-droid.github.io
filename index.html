@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>سالابر — کاسه‌ات رو خودت بساز</title>
+<link rel="preload" as="image" href="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261114_042539_bee90308-05ef-4b87-a91f-6b86c7e02f94.png&w=2400&q=86">
+<link rel="preload" as="image" href="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261114_042539_7e258e75-50d8-422c-8395-8506fa6fa210.png&w=1500&q=86">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Fredoka:wght@400;500;600;700&family=Caveat+Brush&family=Courier+Prime:wght@400;700&family=Vazirmatn:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -106,7 +108,7 @@ body.open .pop.flat{transform:none}
   filter:drop-shadow(0 3px 3px rgba(10,40,42,.35));
 }
 #tagline{
-  position:absolute; right:calc(var(--u)*11.6); top:calc(var(--u)*5.4); z-index:40;
+  position:absolute; right:calc(var(--u)*14.2); top:calc(var(--u)*5.4); z-index:40;
   font-weight:700; font-size:calc(var(--u)*1.55); color:var(--coral-d);
   transform:rotate(5deg); text-align:center; line-height:1.5;
   text-shadow:0 1px 0 #fff, 0 2px 6px rgba(255,255,255,.6);
@@ -117,7 +119,7 @@ body.open .pop.flat{transform:none}
 #stkYours{right:calc(var(--u)*2); top:calc(var(--u)*51.6); color:var(--coral-d); font-size:calc(var(--u)*1.9); transform:rotate(3deg)}
 #stkPal{left:calc(var(--u)*2); top:calc(var(--u)*51.6); color:var(--coral-d); font-family:'Vazirmatn',sans-serif; font-weight:900; font-size:calc(var(--u)*1.9); transform:rotate(6deg)}
 /* ---------- intro ---------- */
-#introCopy{position:absolute; right:calc(var(--u)*7); top:calc(var(--u)*17); z-index:35; width:calc(var(--u)*30);
+#introCopy{position:absolute; right:calc(var(--u)*7); top:calc(var(--u)*17); z-index:35; width:calc(var(--u)*23.5);
   transition:transform .6s ease, opacity .5s ease}
 #introCopy h1{font-weight:900; font-size:calc(var(--u)*3.6); color:var(--teal); line-height:1.35; margin-bottom:calc(var(--u)*1.2);
   text-shadow:0 2px 0 rgba(255,255,255,.75)}
@@ -146,6 +148,7 @@ body.open #introBtn{opacity:0; pointer-events:none}
 .pan .panSpr{position:absolute; inset:0; transition:transform .18s ease}
 .pan:hover .panSpr{transform:translateY(-5px) scale(1.03)}
 .tag{
+  z-index:60; pointer-events:none;
   position:absolute; top:calc(100% + var(--u)*.45); right:50%; transform:translateX(50%);
   display:flex; align-items:center; gap:calc(var(--u)*.5); white-space:nowrap;
   background:var(--teal); color:#fff; border-radius:999px;
@@ -166,6 +169,7 @@ body.open #introBtn{opacity:0; pointer-events:none}
 .bottle.gone .btSpr{opacity:0}
 .bottle .tag{background:var(--cream); color:var(--ink); box-shadow:0 6px 14px rgba(10,50,52,.3)}
 .bottle.used .tag{background:var(--teal); color:#fff}
+.bottle .tag{white-space:normal; width:calc(var(--u)*6.8); text-align:center; justify-content:center; line-height:1.5; font-size:calc(var(--u)*.8)}
 /* ---------- open box + bowl ---------- */
 #obox{position:absolute; left:calc(var(--u)*28.5); top:calc(var(--u)*22.4);
   width:calc(var(--u)*42); height:calc(var(--u)*28); z-index:15}
@@ -231,6 +235,7 @@ body.open #bar.pop{transform:translateX(-50%)}
 #total{font-weight:900; font-size:calc(var(--u)*1.3);
   color:var(--ink); min-width:calc(var(--u)*10); text-align:center}
 #topOff{
+  white-space:nowrap;
   background:var(--coral); color:#fff; border:none; font-family:inherit; font-weight:700;
   font-size:calc(var(--u)*1.15); border-radius:999px;
   padding:calc(var(--u)*.8) calc(var(--u)*1.7);
@@ -333,7 +338,7 @@ body.open #bar.pop{transform:translateX(-50%)}
 #held{position:fixed; z-index:90; pointer-events:none; display:none;
   transform:translate(-50%,-50%)}
 #held .heldSpr{width:100%; height:100%; filter:drop-shadow(0 22px 22px rgba(0,0,0,.45))}
-#glove{position:fixed; z-index:100; pointer-events:none; width:58px; height:62px;
+#glove{position:fixed; z-index:100; pointer-events:none; opacity:0; transition:opacity .25s ease; width:58px; height:62px;
   transform:translate(-16px,-10px); filter:drop-shadow(0 4px 5px rgba(0,0,0,.35))}
 #glove svg{display:block}
 .hidden{display:none}
@@ -427,27 +432,27 @@ const SHEETS = {
 };
 const ING = {
   rice:    {pan:[1539,687,2020,1204], pl:[1569,742,2000,1207], name:'برنج',            price:295000, icon:'🍚', kind:'base'},
-  carrot:  {pan:[51,149,511,638],     pl:[48,185,490,647],     name:'هویج',            price:25000,  icon:'🥕', kind:'topping'},
-  tomato:  {pan:[542,146,1009,632],   pl:[564,187,1006,641],   name:'گوجه گیلاسی',     price:35000,  icon:'🍅', kind:'topping'},
+  carrot:  {pan:[51,149,511,638],     pl:[48,185,490,647],     name:'سالمون',          price:25000,  icon:'🍣', kind:'topping'},
+  tomato:  {pan:[542,146,1009,632],   pl:[564,187,1006,641],   name:'تن ماهی',         price:35000,  icon:'🐟', kind:'topping'},
   avocado: {pan:[1043,150,1535,629],  pl:[1075,197,1501,656],  name:'آووکادو',         price:85000,  icon:'🥑', kind:'topping'},
   edamame: {pan:[1536,149,1998,631],  pl:[1548,193,1982,646],  name:'ادامامه',         price:45000,  icon:'🫛', kind:'topping'},
   cucumber:{pan:[33,687,508,1203],    pl:[45,740,497,1214],    name:'خیار',            price:25000,  icon:'🥒', kind:'topping'},
-  corn:    {pan:[535,689,1009,1201],  pl:[557,744,992,1214],   name:'ذرت',             price:30000,  icon:'🌽', kind:'topping'},
-  greens:  {pan:[1044,687,1519,1198], pl:[1057,740,1501,1217], name:'میکس کاهو و سبزی', price:35000, icon:'🥬', kind:'topping'}
+  corn:    {pan:[535,689,1009,1201],  pl:[557,744,992,1214],   name:'انبه',            price:30000,  icon:'🥭', kind:'topping'},
+  greens:  {pan:[1044,687,1519,1198], pl:[1057,740,1501,1217], name:'سالاد جلبک',      price:35000, icon:'🥬', kind:'topping'}
 };
 const PAN_LAYOUT = [
   ['rice',2.4,11.8],['carrot',2.4,21.4],['tomato',2.4,31],['avocado',2.4,40.6],
   ['edamame',12.4,11.8],['cucumber',12.4,21.4],['corn',12.4,31],['greens',12.4,40.6]
 ];
 const BOTTLES = {
-  shoyu:{box:[302,104,691,1222],   name:'سس انار و زرشک', color:'#7a1f2b', left:63.4},
-  mayo: {box:[826,102,1222,1221],  name:'سس خردل و عسل',  color:'#dfa022', left:56.4},
-  ponzu:{box:[1354,107,1746,1218], name:'سس سزار',        color:'#ece1c8', left:49.4}
+  shoyu:{box:[302,104,691,1222],   name:'شویو',      color:'#3a1c0e', left:63.4},
+  mayo: {box:[826,102,1222,1221],  name:'مایونز تند', color:'#ee8a3a', left:56.4},
+  ponzu:{box:[1354,107,1746,1218], name:'پونزو',      color:'#e9dcae', left:49.4}
 };
 const SIDES = {
   miso:    {box:[26,323,619,1033],    name:'سوپ روز',        price:85000, top:8.2},
-  gyoza:   {box:[628,447,1458,1037],  name:'نان سیر',        price:65000, top:21.8},
-  crackers:{box:[1457,304,2036,1048], name:'سیب‌زمینی تنوری', price:75000, top:35.4}
+  gyoza:   {box:[628,447,1458,1037],  name:'گیوزا',          price:65000, top:21.8},
+  crackers:{box:[1457,304,2036,1048], name:'کراکر میگو',     price:75000, top:35.4}
 };
 const BOWL_EMPTY=[168,245,930,1140], BOWL_RICE=[1110,247,1866,1143];
 const BOX_OPEN=[259,141,1879,1216], BOX_CLOSED=[247,136,1901,1261];
@@ -534,7 +539,7 @@ const bar=document.createElement('div'); bar.id='bar';
 bar.innerHTML='<div class="step"><span class="n">۱</span> انتخاب پایه</div>'
   +'<div class="step"><span class="n">۲</span> افزودن مخلفات</div>'
   +'<div class="step"><span class="n">۳</span> تکمیل کاسه</div>'
-  +'<div class="step"><span class="n">۴</span> انتخاب سوس</div>'
+  +'<div class="step"><span class="n">۴</span> انتخاب سس</div>'
   +'<div id="total">'+fmt(0)+'</div>'
   +'<button id="topOff" class="off" data-act>تمومش کن ↗</button>'
   +'<button id="undoBtn" data-act>↺ برگردون</button>';
@@ -936,7 +941,7 @@ scene.addEventListener('pointerdown',e=>{
   const sd=e.target.closest('.side'); if(sd){ pickSide(sd.dataset.side,e); downInfo={x:e.clientX,y:e.clientY}; return; }
 });
 window.addEventListener('pointermove',e=>{
-  gloveEl.style.left=e.clientX+'px'; gloveEl.style.top=e.clientY+'px';
+  gloveEl.style.left=e.clientX+'px'; gloveEl.style.top=e.clientY+'px'; gloveEl.style.opacity='1';
   if(held) setGlove('grab');
   else setGlove(e.target&&e.target.closest&&e.target.closest('[data-act],button,a,input,select,textarea,label,.pan,.bottle,.side,.pile')?'point':'open');
   if(downInfo&&held&&Math.hypot(e.clientX-downInfo.x,e.clientY-downInfo.y)>6) downInfo.dragged=true;
