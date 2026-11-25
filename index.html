@@ -116,7 +116,7 @@ body.open .pop.flat{transform:none}
 /* ---------- stickers ---------- */
 .sticker{position:absolute; z-index:30; font-weight:700; text-shadow:0 1px 0 #fff, 0 2px 8px rgba(255,255,255,.65)}
 #stkTogether{left:calc(var(--u)*2.2); top:calc(var(--u)*4.9); color:var(--teal); font-size:calc(var(--u)*1.8); transform:rotate(-3deg)}
-#stkYours{right:calc(var(--u)*2); top:calc(var(--u)*51.6); color:var(--coral-d); font-size:calc(var(--u)*1.9); transform:rotate(3deg)}
+#stkYours{right:calc(var(--u)*72.5); top:calc(var(--u)*30); color:var(--coral-d); font-size:calc(var(--u)*1.9); transform:rotate(-4deg)}
 #stkPal{left:calc(var(--u)*2); top:calc(var(--u)*51.6); color:var(--coral-d); font-family:'Vazirmatn',sans-serif; font-weight:900; font-size:calc(var(--u)*1.9); transform:rotate(6deg)}
 /* ---------- intro ---------- */
 #introCopy{position:absolute; right:calc(var(--u)*7); top:calc(var(--u)*17); z-index:35; width:calc(var(--u)*23.5);
@@ -144,6 +144,7 @@ body.open #closedBox{transform:rotate(4deg) translateY(-46px); opacity:0; pointe
 body.open #introBtn{opacity:0; pointer-events:none}
 .spr{background-repeat:no-repeat; filter:drop-shadow(0 10px 10px rgba(0,0,0,.35))}
 /* ---------- builder: pans ---------- */
+#panShelf{position:absolute; inset:0}
 .pan{position:absolute; width:calc(var(--u)*9.2); height:calc(var(--u)*9.4); z-index:20}
 .pan .panSpr{position:absolute; inset:0; transition:transform .18s ease}
 .pan:hover .panSpr{transform:translateY(-5px) scale(1.03)}
@@ -338,6 +339,10 @@ body.open #bar.pop{transform:translateX(-50%)}
 #held{position:fixed; z-index:90; pointer-events:none; display:none;
   transform:translate(-50%,-50%)}
 #held .heldSpr{width:100%; height:100%; filter:drop-shadow(0 22px 22px rgba(0,0,0,.45))}
+.heldTag{position:absolute; left:50%; top:calc(100% + 8px); transform:translateX(-50%);
+  background:var(--teal); color:#fff; font-weight:700; font-size:14px; line-height:1.6;
+  padding:2px 14px; border-radius:999px; white-space:nowrap; box-shadow:0 8px 18px rgba(10,50,52,.4)}
+.srcHi{filter:drop-shadow(0 0 12px rgba(242,118,106,.95))}
 #glove{position:fixed; z-index:100; pointer-events:none; opacity:0; transition:opacity .25s ease; width:58px; height:62px;
   transform:translate(-16px,-10px); filter:drop-shadow(0 4px 5px rgba(0,0,0,.35))}
 #glove svg{display:block}
@@ -365,6 +370,98 @@ body.open #bar.pop{transform:translateX(-50%)}
   position:absolute; top:calc(var(--u)*55); left:50%; transform:translateX(-50%); z-index:45;
   font-size:calc(var(--u)*.8); font-weight:500; color:rgba(255,255,255,.85);
   text-shadow:0 1px 4px rgba(0,0,0,.65); white-space:nowrap;
+}
+/* ================= mobile (portrait phones) ================= */
+@media (pointer:coarse){
+  #glove{display:none!important}
+}
+@media (max-width:760px){
+  body{cursor:auto}
+  #glove{display:none!important}
+  /* tall portrait stage: 100 x 177.78 u */
+  #scene{width:calc(var(--u)*100); height:calc(var(--u)*177.78)}
+  /* declutter */
+  .sticker{display:none!important}
+  #tagline{display:none!important}
+  #band{height:calc(var(--u)*11)}
+  #band nav{display:none}
+  #logo .wm{font-size:calc(var(--u)*5.2)}
+  #howBtn{font-size:calc(var(--u)*3.2)}
+  #howBtn .q{width:calc(var(--u)*4.6); height:calc(var(--u)*4.6)}
+  #howPop{width:88vw; left:6vw; top:calc(var(--u)*12.5); font-size:calc(var(--u)*3.8)}
+  #howPop h4{font-size:calc(var(--u)*4.2)}
+  #howPop li{font-size:calc(var(--u)*3.4)}
+  #demoLbl{top:calc(var(--u)*167)}
+  /* intro state */
+  #introCopy{right:calc(var(--u)*6); top:calc(var(--u)*15); width:calc(var(--u)*88)}
+  #introCopy h1{font-size:calc(var(--u)*8.6)}
+  #introCopy p{font-size:calc(var(--u)*4.4); line-height:1.9}
+  #closedBox{left:calc(var(--u)*9); top:calc(var(--u)*62); width:calc(var(--u)*82); height:calc(var(--u)*64.7)}
+  #introBtn{top:calc(var(--u)*158); font-size:calc(var(--u)*4.4); padding:calc(var(--u)*2.2) calc(var(--u)*5)}
+  /* builder: open box + bowl */
+  #obox{left:calc(var(--u)*10); top:calc(var(--u)*12.5); width:calc(var(--u)*80); height:calc(var(--u)*53.3)}
+  /* builder: sauce bottles row */
+  .bottle{width:calc(var(--u)*9.4)!important; height:calc(var(--u)*27)!important; top:calc(var(--u)*69)!important}
+  .bottle[data-sauce="ponzu"]{left:calc(var(--u)*24)!important}
+  .bottle[data-sauce="mayo"]{left:calc(var(--u)*45)!important}
+  .bottle[data-sauce="shoyu"]{left:calc(var(--u)*66)!important}
+  .bottle .tag{width:calc(var(--u)*23); font-size:calc(var(--u)*2.9); line-height:1.5}
+  /* builder: sides row */
+  .side{width:calc(var(--u)*23.6)!important; height:calc(var(--u)*26)!important; top:calc(var(--u)*100)!important}
+  .side[data-side="soup"]{left:calc(var(--u)*3)!important}
+  .side[data-side="gyoza"]{left:calc(var(--u)*38)!important}
+  .side[data-side="crackers"]{left:calc(var(--u)*73)!important}
+  .side .tag{font-size:calc(var(--u)*3)}
+  /* builder: pans as a horizontal scroll shelf */
+  #panShelf{inset:auto; left:0; right:0; top:calc(var(--u)*130); height:calc(var(--u)*34);
+    overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch;
+    scrollbar-width:none; touch-action:pan-x}
+  #panShelf::-webkit-scrollbar{display:none}
+  .pan{width:calc(var(--u)*22)!important; height:calc(var(--u)*22.5)!important; top:calc(var(--u)*.5)!important}
+  .pan[data-ing="rice"]{right:calc(var(--u)*2)!important}
+  .pan[data-ing="carrot"]{right:calc(var(--u)*27)!important}
+  .pan[data-ing="tomato"]{right:calc(var(--u)*52)!important}
+  .pan[data-ing="avocado"]{right:calc(var(--u)*77)!important}
+  .pan[data-ing="edamame"]{right:calc(var(--u)*102)!important}
+  .pan[data-ing="cucumber"]{right:calc(var(--u)*127)!important}
+  .pan[data-ing="corn"]{right:calc(var(--u)*152)!important}
+  .pan[data-ing="greens"]{right:calc(var(--u)*177)!important}
+  .pan .tag{font-size:calc(var(--u)*3.1)}
+  .pan .tag .ic{width:calc(var(--u)*4); height:calc(var(--u)*4); font-size:calc(var(--u)*2.4)}
+  /* toast above the box, centred */
+  #toast{font-size:calc(var(--u)*3.6); top:calc(var(--u)*63); left:50%; right:auto}
+  /* bottom bar pinned to the viewport bottom */
+  #bar{position:fixed; left:50%; transform:translateX(-50%); top:auto;
+    bottom:calc(env(safe-area-inset-bottom, 0px) + 8px); width:96vw;
+    flex-wrap:wrap; justify-content:center; row-gap:6px; z-index:70}
+  .step{font-size:calc(var(--u)*3.1)}
+  .step .n{width:calc(var(--u)*4.6); height:calc(var(--u)*4.6); font-size:calc(var(--u)*2.8)}
+  #total{font-size:calc(var(--u)*4)}
+  #topOff{font-size:calc(var(--u)*3.4)}
+  #undoBtn{font-size:calc(var(--u)*3)}
+  /* receipt sheet */
+  #receipt{width:calc(var(--u)*88); right:calc(var(--u)*6); left:auto; max-height:60%; overflow:auto}
+  #receipt .rTitle{font-size:calc(var(--u)*4.2)}
+  #receipt .rSub{font-size:calc(var(--u)*3.2)}
+  #receipt .rLine{font-size:calc(var(--u)*3.4)}
+  #receipt .rTotal{font-size:calc(var(--u)*3.9)}
+  #receipt .modes{font-size:calc(var(--u)*3.2)}
+  #checkoutBtn{font-size:calc(var(--u)*3.6)}
+  #backBuild{font-size:calc(var(--u)*3.2)}
+  /* checkout card */
+  #coCard{width:94vw; max-height:92dvh; overflow:auto; font-size:15px}
+  #coCard h2{font-size:21px}
+  #coCard label{font-size:15px}
+  #coCard input, #coCard select, #coCard textarea{font-size:16px}
+  #coCard .coTotal{font-size:17px}
+  #placeOrder{font-size:17px}
+  .ostep{font-size:13px}
+  #coCard label.payOpt{font-size:14px}
+  #coCard label.payOpt .pn{font-size:13px}
+  #coDone h3{font-size:20px}
+  #coDone .ordNum{font-size:15px}
+  #coDone .payLine{font-size:14px}
+  #againBtn{font-size:16px}
 }
 </style>
 </head>
@@ -432,27 +529,27 @@ const SHEETS = {
 };
 const ING = {
   rice:    {pan:[1539,687,2020,1204], pl:[1569,742,2000,1207], name:'برنج',            price:295000, icon:'🍚', kind:'base'},
-  carrot:  {pan:[51,149,511,638],     pl:[48,185,490,647],     name:'سالمون',          price:25000,  icon:'🍣', kind:'topping'},
-  tomato:  {pan:[542,146,1009,632],   pl:[564,187,1006,641],   name:'تن ماهی',         price:35000,  icon:'🐟', kind:'topping'},
+  carrot:  {pan:[51,149,511,638],     pl:[48,185,490,647],     name:'هویج',            price:25000,  icon:'🥕', kind:'topping'},
+  tomato:  {pan:[542,146,1009,632],   pl:[564,187,1006,641],   name:'گوجه گیلاسی',     price:35000,  icon:'🍅', kind:'topping'},
   avocado: {pan:[1043,150,1535,629],  pl:[1075,197,1501,656],  name:'آووکادو',         price:85000,  icon:'🥑', kind:'topping'},
   edamame: {pan:[1536,149,1998,631],  pl:[1548,193,1982,646],  name:'ادامامه',         price:45000,  icon:'🫛', kind:'topping'},
   cucumber:{pan:[33,687,508,1203],    pl:[45,740,497,1214],    name:'خیار',            price:25000,  icon:'🥒', kind:'topping'},
-  corn:    {pan:[535,689,1009,1201],  pl:[557,744,992,1214],   name:'انبه',            price:30000,  icon:'🥭', kind:'topping'},
-  greens:  {pan:[1044,687,1519,1198], pl:[1057,740,1501,1217], name:'سالاد جلبک',      price:35000, icon:'🥬', kind:'topping'}
+  corn:    {pan:[535,689,1009,1201],  pl:[557,744,992,1214],   name:'ذرت',             price:30000,  icon:'🌽', kind:'topping'},
+  greens:  {pan:[1044,687,1519,1198], pl:[1057,740,1501,1217], name:'میکس کاهو و سبزی', price:35000, icon:'🥬', kind:'topping'}
 };
 const PAN_LAYOUT = [
   ['rice',2.4,11.8],['carrot',2.4,21.4],['tomato',2.4,31],['avocado',2.4,40.6],
   ['edamame',12.4,11.8],['cucumber',12.4,21.4],['corn',12.4,31],['greens',12.4,40.6]
 ];
 const BOTTLES = {
-  shoyu:{box:[302,104,691,1222],   name:'شویو',      color:'#3a1c0e', left:63.4},
-  mayo: {box:[826,102,1222,1221],  name:'مایونز تند', color:'#ee8a3a', left:56.4},
-  ponzu:{box:[1354,107,1746,1218], name:'پونزو',      color:'#e9dcae', left:49.4}
+  shoyu:{box:[302,104,691,1222],   name:'سس انار و زرشک', color:'#7a1f2b', left:63.4},
+  mayo: {box:[826,102,1222,1221],  name:'سس خردل و عسل',  color:'#dfa022', left:56.4},
+  ponzu:{box:[1354,107,1746,1218], name:'سس سزار',        color:'#ece1c8', left:49.4}
 };
 const SIDES = {
   miso:    {box:[26,323,619,1033],    name:'سوپ روز',        price:85000, top:8.2},
-  gyoza:   {box:[628,447,1458,1037],  name:'گیوزا',          price:65000, top:21.8},
-  crackers:{box:[1457,304,2036,1048], name:'کراکر میگو',     price:75000, top:35.4}
+  gyoza:   {box:[628,447,1458,1037],  name:'نان سیر',        price:65000, top:21.8},
+  crackers:{box:[1457,304,2036,1048], name:'سیب‌زمینی تنوری', price:75000, top:35.4}
 };
 const BOWL_EMPTY=[168,245,930,1140], BOWL_RICE=[1110,247,1866,1143];
 const BOX_OPEN=[259,141,1879,1216], BOX_CLOSED=[247,136,1901,1261];
@@ -489,6 +586,7 @@ const U='calc(var(--u)*';
 let popD=0;
 function pop(el){ el.classList.add('pop'); el.style.setProperty('--d',popD++); }
 const panEls={}, bottleEls={}, sideEls={};
+const shelf=document.createElement('div'); shelf.id='panShelf'; builder.appendChild(shelf);
 for(const [key,right,top] of PAN_LAYOUT){
   const d=ING[key];
   const pan=document.createElement('div'); pan.className='pan'; pan.dataset.ing=key; pan.dataset.act='';
@@ -497,7 +595,7 @@ for(const [key,right,top] of PAN_LAYOUT){
   const spr=document.createElement('div'); spr.className='panSpr spr';
   const tag=document.createElement('div'); tag.className='tag';
   tag.innerHTML='<span class="ic">'+d.icon+'</span><span>'+d.name+'</span><span class="pr">'+ingTag(d)+'</span>';
-  pan.appendChild(spr); pan.appendChild(tag); builder.appendChild(pan); pop(pan);
+  pan.appendChild(spr); pan.appendChild(tag); shelf.appendChild(pan); pop(pan);
   panEls[key]=pan; regSprite(spr,SHEETS.tr,d.pan);
 }
 for(const key of Object.keys(BOTTLES)){
@@ -806,17 +904,23 @@ function overCompartment(e){
 function makeHeld(kind,id,w,h,url,box,rot){
   heldEl.innerHTML=''; const spr=document.createElement('div'); spr.className='heldSpr';
   heldEl.appendChild(spr);
+  const htag=document.createElement('div'); htag.className='heldTag';
+  htag.textContent=(kind==='ing'?ING[id].icon+' '+ING[id].name:kind==='bottle'?BOTTLES[id].name:SIDES[id].name);
+  htag.style.transform='translateX(-50%) rotate('+(-rot)+'deg)';
+  heldEl.appendChild(htag);
+  const srcEl=kind==='ing'?panEls[id]:kind==='bottle'?bottleEls[id]:sideEls[id];
+  if(srcEl) srcEl.classList.add('srcHi');
   heldEl.style.width=w+'px'; heldEl.style.height=h+'px';
   heldEl.style.transform='translate(-50%,-50%) rotate('+rot+'deg)';
   heldEl.style.display='block';
   regSprite(spr,url,box);
   held={kind,id,el:heldEl,rot};
 }
-function clearHeld(){ held=null; heldEl.style.display='none'; heldEl.innerHTML=''; bowlWrap.classList.remove('glow'); }
+function clearHeld(){ held=null; heldEl.style.display='none'; heldEl.innerHTML=''; bowlWrap.classList.remove('glow'); document.querySelectorAll('.srcHi').forEach(el=>el.classList.remove('srcHi')); }
 function flyHeldTo(targetEl,e,done){
   if(!held){ if(done) done(); return; }
   const el=heldEl, r=targetEl.getBoundingClientRect();
-  held=null; bowlWrap.classList.remove('glow');
+  held=null; bowlWrap.classList.remove('glow'); document.querySelectorAll('.srcHi').forEach(el2=>el2.classList.remove('srcHi'));
   el.style.left=(r.left+r.width/2)+'px'; el.style.top=(r.top+r.height/2)+'px';
   el.style.transition='left .45s cubic-bezier(.3,.7,.3,1), top .45s cubic-bezier(.3,.7,.3,1), opacity .45s ease';
   el.style.opacity='.3';
