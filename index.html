@@ -34,7 +34,10 @@ body *, body{cursor:none !important}
 }
 #counter::after{
   content:''; position:absolute; inset:0;
-  background:radial-gradient(ellipse at center, transparent 55%, rgba(10,30,32,.38) 100%);
+  background:
+    radial-gradient(ellipse at 50% 26%, rgba(255,186,92,.30), transparent 55%),
+    linear-gradient(rgba(146,84,28,.15), rgba(59,32,8,.18)),
+    radial-gradient(ellipse at center, transparent 52%, rgba(24,12,2,.42) 100%);
 }
 #stage{position:fixed; inset:0; display:flex; align-items:center; justify-content:center; z-index:1}
 #scene{
@@ -391,7 +394,8 @@ body.open #bar.pop{transform:translateX(-50%)}
   #howPop{width:88vw; left:6vw; top:calc(var(--u)*12.5); font-size:calc(var(--u)*3.8)}
   #howPop h4{font-size:calc(var(--u)*4.2)}
   #howPop li{font-size:calc(var(--u)*3.4)}
-  #demoLbl{top:calc(var(--u)*167)}
+  #demoLbl{top:calc(var(--u)*171)}
+  #scene{margin-top:calc(var(--u)*-10)}
   /* intro state */
   #introCopy{right:calc(var(--u)*6); top:calc(var(--u)*15); width:calc(var(--u)*88)}
   #introCopy h1{font-size:calc(var(--u)*8.6)}
@@ -401,19 +405,19 @@ body.open #bar.pop{transform:translateX(-50%)}
   /* builder: open box + bowl */
   #obox{left:calc(var(--u)*10); top:calc(var(--u)*12.5); width:calc(var(--u)*80); height:calc(var(--u)*53.3)}
   /* builder: sauce bottles row */
-  .bottle{width:calc(var(--u)*9.4)!important; height:calc(var(--u)*27)!important; top:calc(var(--u)*69)!important}
-  .bottle[data-sauce="ponzu"]{left:calc(var(--u)*24)!important}
+  .bottle{width:calc(var(--u)*9.4)!important; height:calc(var(--u)*27)!important; top:calc(var(--u)*67.5)!important}
+  .bottle[data-sauce="ponzu"]{left:calc(var(--u)*21)!important}
   .bottle[data-sauce="mayo"]{left:calc(var(--u)*45)!important}
-  .bottle[data-sauce="shoyu"]{left:calc(var(--u)*66)!important}
-  .bottle .tag{width:calc(var(--u)*23); font-size:calc(var(--u)*2.9); line-height:1.5}
+  .bottle[data-sauce="shoyu"]{left:calc(var(--u)*69)!important}
+  .bottle .tag{width:calc(var(--u)*19.5); font-size:calc(var(--u)*2.8); line-height:1.5}
   /* builder: sides row */
-  .side{width:calc(var(--u)*23.6)!important; height:calc(var(--u)*26)!important; top:calc(var(--u)*100)!important}
-  .side[data-side="soup"]{left:calc(var(--u)*3)!important}
+  .side{width:calc(var(--u)*23.6)!important; height:calc(var(--u)*26)!important; top:calc(var(--u)*103.5)!important}
+  .side[data-side="soup"]{left:calc(var(--u)*5)!important}
   .side[data-side="gyoza"]{left:calc(var(--u)*38)!important}
-  .side[data-side="crackers"]{left:calc(var(--u)*73)!important}
-  .side .tag{font-size:calc(var(--u)*3)}
+  .side[data-side="crackers"]{left:calc(var(--u)*71)!important}
+  .side .tag{font-size:calc(var(--u)*2.85); white-space:nowrap}
   /* builder: pans as a horizontal scroll shelf */
-  #panShelf{inset:auto; left:0; right:0; top:calc(var(--u)*130); height:calc(var(--u)*34);
+  #panShelf{inset:auto; left:0; right:0; top:calc(var(--u)*134.5); height:calc(var(--u)*34);
     overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch;
     scrollbar-width:none; touch-action:pan-x}
   #panShelf::-webkit-scrollbar{display:none}
@@ -433,8 +437,8 @@ body.open #bar.pop{transform:translateX(-50%)}
   /* bottom bar pinned to the viewport bottom */
   #bar{position:fixed; left:50%; transform:translateX(-50%); top:auto;
     bottom:calc(env(safe-area-inset-bottom, 0px) + 8px); width:96vw;
-    flex-wrap:wrap; justify-content:center; row-gap:6px; z-index:70}
-  .step{font-size:calc(var(--u)*3.1)}
+    flex-wrap:wrap; justify-content:center; row-gap:5px; z-index:70}
+  .step{font-size:calc(var(--u)*2.95)}
   .step .n{width:calc(var(--u)*4.6); height:calc(var(--u)*4.6); font-size:calc(var(--u)*2.8)}
   #total{font-size:calc(var(--u)*4)}
   #topOff{font-size:calc(var(--u)*3.4)}
@@ -492,7 +496,7 @@ body.open #bar.pop{transform:translateX(-50%)}
     </div>
 
     <div id="logo"><div class="wm">سالابر</div></div>
-    <div id="tagline">سالاد تازه،<br>به سلیقه خودت.</div>
+    <div id="tagline">تازه و خوشمزه،<br>دقیقاً به سلیقه تو!</div>
 
     <div class="sticker pop" id="stkTogether" style="--d:1">با هم بهتره.</div>
     <div class="sticker pop" id="stkYours" style="--d:14">مال خودت کن!</div>
@@ -500,7 +504,7 @@ body.open #bar.pop{transform:translateX(-50%)}
 
     <div id="introCopy">
       <h1>چیزای خوب، توی کاسه‌ان.</h1>
-      <p>یه کم برنج، کلی چیز تازه. کاسه‌ات رو بساز، سس بزن و یه مخلفات هم بردار.</p>
+      <p>تازه، رنگی، خوشمزه! کاسه‌ت رو خودت بساز: برنج، کلی مخلفات تازه، سس مخصوص و یه کنارِ حسابی.</p>
     </div>
     <div id="closedBox" data-act></div>
     <button id="introBtn" data-act>یه چیز تازه باز کن ↗</button>
@@ -610,7 +614,7 @@ for(const key of Object.keys(BOTTLES)){
 }
 const obox=document.createElement('div'); obox.id='obox';
 obox.innerHTML='<div class="boxSpr spr"></div>'
-  +'<div id="menuCard"><div class="t1">کاسه سالابر</div><div class="t2">مواد تازه · حس خوب</div></div>'
+  +'<div id="menuCard"><div class="t1">کاسه سالابر</div><div class="t2">تازه و خوشمزه · هر روز</div></div>'
   +'<div id="sideInBox"></div>'
   +'<div id="bowlWrap"><div id="bowlGlow"></div>'
   +'<div class="bowlLayer spr" id="bowlEmpty"></div><div class="bowlLayer spr" id="bowlRice"></div>'
@@ -933,7 +937,7 @@ function pickIngredient(id,e){
   moveHeld(e);
 }
 function pickBottle(id,e){
-  if(!state.rice){ toast('اول برنج!'); return; }
+  if(!state.rice){ toast('اول برنج رو بردار!'); return; }
   bottleEls[id].classList.add('gone');
   const r=bottleEls[id].getBoundingClientRect();
   makeHeld('bottle',id,r.width,r.height,SHEETS.bt,BOTTLES[id].box,130);
@@ -974,9 +978,9 @@ function dropIngredient(e){
     pushHist(); state.rice=true; clearHeld();
     bowlWrap.classList.add('hasRice');
     bowlWrap.classList.remove('squash'); void bowlWrap.offsetWidth; bowlWrap.classList.add('squash');
-    toast('برنج اضافه شد.'); refreshSteps(); refreshTotal(); return;
+    toast('برنج اومد تو کاسه! 🍚'); refreshSteps(); refreshTotal(); return;
   }
-  if(!state.rice){ toast('اول برنج!'); cancelHeld(e); return; }
+  if(!state.rice){ toast('اول برنج رو بردار!'); cancelHeld(e); return; }
   if(state.piles.length>=8){ toast('کاسه پر شد!'); cancelHeld(e); return; }
   const f=bowlFrac(e), pos=snapPile(f.x,f.y);
   pushHist(); state.piles.push({ing:id,x:pos.x,y:pos.y}); clearHeld();
@@ -1079,13 +1083,13 @@ document.getElementById('undoBtn').addEventListener('click',undo);
 topOffBtn.addEventListener('click',()=>{
   if(topOffBtn.classList.contains('off')||state.topped) return;
   pushHist(); state.topped=true; renderGarnish();
-  toast('یه کاسه حسابی خوب شد.'); refreshSteps();
+  toast('یه کاسه‌ی حسابی شد! 😋'); refreshSteps();
   setTimeout(()=>{ state.receipt=true; showReceipt(true); },650);
 });
 function openSite(){
   if(state.opened) return;
   state.opened=true; document.body.classList.add('open');
-  setTimeout(()=>toast('برای شروع، برنج رو بردار.'),650);
+  setTimeout(()=>toast('شروع کنیم! اول برنج رو بردار.'),650);
   setTimeout(()=>{ layoutSprites(); fitCanvas(); },80);
 }
 document.getElementById('closedBox').addEventListener('click',openSite);
